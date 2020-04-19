@@ -1,0 +1,24 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+<head>  <meta name="dj4e" content="e205ee2a5de471a70c1fd1b46033a75f"> </head>
+
+  <h1>Type List</h1>
+  {% if type_list %}
+  <ul>
+    {% for type in type_list %}
+      <li>
+          {{ type.name }}
+         (<a href="{% url 'gadgets:type_update' type.id %}">Update</a> |
+          <a href="{% url 'gadgets:type_delete' type.id %}">Delete</a>)
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no types in the library.</p>
+  {% endif %}
+  <p><a href="{% url 'gadgets:type_create' %}">Add a type</a></p>
+  <p>
+    <a href="{% url 'gadgets:all' %}">Back to gadgets</a>
+  </p>
+{% endblock %}

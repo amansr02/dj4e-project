@@ -1,0 +1,14 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+<head>  <meta name="dj4e" content="e205ee2a5de471a70c1fd1b46033a75f"> </head>
+<h1>Delete Wizard</h1>
+
+<p>Are you sure you want to delete the wizard: {{ wizard }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete.">
+</form>
+
+{% endblock %}

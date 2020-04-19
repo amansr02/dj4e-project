@@ -1,0 +1,24 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+<head>  <meta name="dj4e" content="e205ee2a5de471a70c1fd1b46033a75f"> </head>
+
+  <h1>House List</h1>
+  {% if house_list %}
+  <ul>
+    {% for house in house_list %}
+      <li>
+          {{ house.name }}
+         (<a href="{% url 'wizards:house_update' house.id %}">Update</a> |
+          <a href="{% url 'wizards:house_delete' house.id %}">Delete</a>)
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no makes in the library.</p>
+  {% endif %}
+  <p><a href="{% url 'wizards:house_create' %}">Add a make</a></p>
+  <p>
+    <a href="{% url 'wizards:all' %}">Back to autos</a>
+  </p>
+{% endblock %}

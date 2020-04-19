@@ -1,0 +1,32 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+<head>  <meta name="dj4e" content="e205ee2a5de471a70c1fd1b46033a75f"> </head>
+
+  <h1>Gadget List</h1>
+  {% if gadget_list %}
+  <ul>
+    {% for gadget in gadget_list %}
+      <li>
+          {{ gadget.nickname }} ({{ gadget.type }})
+          (<a href="{% url 'gadgets:gadget_update' gadget.id %}">Update</a> |
+          <a href="{% url 'gadgets:gadget_delete' gadget.id %}">Delete</a>) <br/>
+          {{ gadget.year }} {{gadget.notes}} ({{ gadget.price }} dollars)
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no gadgets in the library.</p>
+  {% endif %}
+  <p>
+    {% if type_count > 0 %}
+      <a href="{% url 'gadgets:gadget_create' %}">Add a gadget</a>
+    {% else %}
+      Please add a type before you add an gadget.
+    {% endif %}
+  </p>
+  <p>
+  <a href="{% url 'gadgets:type_list' %}">View types</a> ({{ type_count }}) | 
+    <a href="{% url 'gadgets:type_create' %}">Add a type</a>
+  </p>
+{% endblock %}
